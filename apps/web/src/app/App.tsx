@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-
 import NxWelcome from './nx-welcome';
+import { TR_COUNTRY_CODE, tags } from '@innovance-demo/shared';
 
 export function App() {
   return (
