@@ -1,12 +1,10 @@
 const { NxWebpackPlugin } = require('@nx/webpack');
 const { NxReactWebpackPlugin } = require('@nx/react');
+const { join } = require('path');
 
 module.exports = {
-  resolve: {
-    alias: {
-      'react-native$': 'react-native-web',
-    },
-    extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js'],
+  output: {
+    path: join(__dirname, '../../dist/apps/web'),
   },
   devServer: {
     port: 4200,
@@ -15,12 +13,11 @@ module.exports = {
     new NxWebpackPlugin({
       tsConfig: './tsconfig.app.json',
       compiler: 'babel',
-      main: './src/main-web.tsx',
+      main: './src/main.tsx',
       index: './src/index.html',
-      outputPath: 'dist/apps/web',
       baseHref: '/',
       assets: ['./src/favicon.ico', './src/assets'],
-      styles: [],
+      styles: ['./src/styles.css'],
       outputHashing: process.env['NODE_ENV'] === 'production' ? 'all' : 'none',
       optimization: process.env['NODE_ENV'] === 'production',
     }),

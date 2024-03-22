@@ -1,9 +1,15 @@
-import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render } from '@testing-library/react';
 
-import App from './App';
+import App from './app';
 
-test('renders correctly', () => {
-  const { getByTestId } = render(<App />);
-  expect(getByTestId('heading')).toHaveTextContent('Welcome');
+describe('App', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<App />);
+    expect(baseElement).toBeTruthy();
+  });
+
+  it('should have a greeting as the title', () => {
+    const { getByText } = render(<App />);
+    expect(getByText(/Welcome web/gi)).toBeTruthy();
+  });
 });
